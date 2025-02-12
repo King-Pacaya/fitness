@@ -1,0 +1,332 @@
+[
+  {
+    "id": 1,
+    "nombre": "Salto a la cuerda",
+    "tipo": "repeticiones",
+    "categoria": "Calentamiento",
+    "imagen": "salto-a-la-cuerda",
+    "descanso": 8,
+    "repeticiones": 100
+  },
+  {
+    "id": 2,
+    "nombre": "Rodilla a codo",
+    "tipo": "tiempo",
+    "categoria": "Calentamiento",
+    "imagen": "rodilla-al-codo",
+    "descanso": 8
+  },
+  {
+    "id": 3,
+    "nombre": "Skipping",
+    "tipo": "tiempo",
+    "categoria": "Calentamiento",
+    "imagen": "skipping",
+    "descanso": 8
+  },
+  {
+    "id": 4,
+    "nombre": "Polichinelas",
+    "tipo": "tiempo",
+    "categoria": "Calentamiento",
+    "imagen": "polichinelas",
+    "descanso": 8
+  },
+  {
+    "id": 5,
+    "nombre": "Balanceo de una pierna",
+    "tipo": "repeticiones",
+    "categoria": "Calentamiento",
+    "imagen": "balanceo-de-pierna",
+    "descanso": 8
+  },
+  {
+    "id": 6,
+    "nombre": "Crunch mano - pie",
+    "tipo": "tiempo",
+    "categoria": "Calentamiento",
+    "imagen": "crunch-mano-pie",
+    "descanso": 8
+  },
+  {
+    "id": 7,
+    "nombre": "Salto con brazos arriba",
+    "tipo": "tiempo",
+    "categoria": "Calentamiento",
+    "imagen": "salto-brazos-arriba",
+    "descanso": 8
+  },
+  {
+    "id": 8,
+    "nombre": "Masai Jumps",
+    "tipo": "repeticiones",
+    "categoria": "Calentamiento",
+    "imagen": "masai-jumps",
+    "descanso": 8,
+    "repeticiones": 100
+  },
+  {
+    "id": 9,
+    "nombre": "Flexión explosión",
+    "tipo": "repeticiones",
+    "categoria": "Pecho",
+    "imagen": "flexion-explosion",
+    "descanso": 10
+  },
+  {
+    "id": 10,
+    "nombre": "Flexión explosión con rodilla",
+    "tipo": "repeticiones",
+    "categoria": "Pecho",
+    "imagen": "flexion-explosion",
+    "descanso": 10
+  },
+  {
+    "id": 11,
+    "nombre": "Flexión triángulo",
+    "tipo": "repeticiones",
+    "categoria": "Pecho",
+    "imagen": "",
+    "descanso": 15
+  },
+  {
+    "id": 12,
+    "nombre": "Flexión inclinado",
+    "tipo": "repeticiones",
+    "categoria": "Pecho",
+    "imagen": "flexion-inclinado",
+    "descanso": 15
+  },
+  {
+    "id": 13,
+    "nombre": "Fondo en banco",
+    "tipo": "repeticiones",
+    "categoria": "Pecho",
+    "imagen": "fondo-en-banco",
+    "descanso": 15
+  },
+  {
+    "id": 14,
+    "nombre": "Flexión con rodilla",
+    "tipo": "repeticiones",
+    "categoria": "Pecho",
+    "imagen": "",
+    "descanso": 15
+  },
+  {
+    "id": 15,
+    "nombre": "Juntar codos",
+    "tipo": "tiempo",
+    "categoria": "Pecho",
+    "imagen": "",
+    "descanso": 15
+  },
+  {
+    "id": 16,
+    "nombre": "Extensión de tríceps con mancuernas",
+    "tipo": "repeticiones",
+    "categoria": "Pecho",
+    "imagen": "extension-de-triceps-con-mancuernas-por-encima-de-la-cabeza",
+    "descanso": 15
+  },
+  {
+    "id": 17,
+    "nombre": "Puños al aire",
+    "tipo": "tiempo",
+    "categoria": "Pecho",
+    "imagen": "",
+    "descanso": 15
+  },
+  {
+    "id": 18,
+    "nombre": "Juntar puños",
+    "tipo": "tiempo",
+    "categoria": "Pecho",
+    "imagen": "",
+    "descanso": 15
+  },
+  {
+    "id": 19,
+    "nombre": "Juntar codos intercalado",
+    "tipo": "tiempo",
+    "categoria": "Pecho",
+    "imagen": "",
+    "descanso": 15
+  },
+  {
+    "id": 20,
+    "nombre": "Flexión de codo",
+    "tipo": "tiempo",
+    "categoria": "Pecho",
+    "imagen": "flexion-de-codo",
+    "descanso": 15
+  },
+  {
+    "id": 21,
+    "nombre": "Sentadilla",
+    "tipo": "tiempo",
+    "categoria": "Pierna",
+    "imagen": "",
+    "descanso": 8
+  },
+  {
+    "id": 22,
+    "nombre": "Zancadas",
+    "tipo": "tiempo",
+    "categoria": "Pierna",
+    "imagen": "zancadas",
+    "descanso": 8
+  },
+  {
+    "id": 23,
+    "nombre": "Sentadilla con salto",
+    "tipo": "tiempo",
+    "categoria": "Pierna",
+    "imagen": "",
+    "descanso": 8
+  },
+  {
+    "id": 24,
+    "nombre": "Sentadilla búlgara",
+    "tipo": "tiempo",
+    "categoria": "Pierna",
+    "imagen": "sentadilla-bulgara",
+    "descanso": 8
+  },
+  {
+    "id": 25,
+    "nombre": "Estocada lateral",
+    "tipo": "tiempo",
+    "categoria": "Pierna",
+    "imagen": "estocada-lateral",
+    "descanso": 8
+  },
+  {
+    "id": 26,
+    "nombre": "Sentadilla con saldo, entrada y salida",
+    "tipo": "tiempo",
+    "categoria": "Pierna",
+    "imagen": "",
+    "descanso": 8
+  },
+  {
+    "id": 27,
+    "nombre": "Extensión de muñeca",
+    "tipo": "repeticiones",
+    "categoria": "Antebrazo",
+    "imagen": "extension-de-muñeca",
+    "descanso": 10
+  },
+  {
+    "id": 28,
+    "nombre": "Curl de muñeca con barra",
+    "tipo": "repeticiones",
+    "categoria": "Antebrazo",
+    "imagen": "curl-de-muñeca-con-barra",
+    "descanso": 10
+  },
+  {
+    "id": 29,
+    "nombre": "Curl con barra",
+    "tipo": "repeticiones",
+    "categoria": "Antebrazo",
+    "imagen": "curl-con-barra",
+    "descanso": 10
+  },
+  {
+    "id": 30,
+    "nombre": "Curl alterno de martillo",
+    "tipo": "repeticiones",
+    "categoria": "Antebrazo",
+    "imagen": "curl-alterno-de-martillo-con-mancuernas",
+    "descanso": 10
+  },
+  {
+    "id": 31,
+    "nombre": "Flexiones en barra",
+    "tipo": "repeticiones",
+    "categoria": "Espalda",
+    "imagen": "flexiones-en-barra",
+    "descanso": 12
+  },
+  {
+    "id": 32,
+    "nombre": "Remo invertido",
+    "tipo": "repeticiones",
+    "categoria": "Espalda",
+    "imagen": "remo-invertido",
+    "descanso": 12
+  },
+  {
+    "id": 33,
+    "nombre": "Remo inclinado con mancuernas",
+    "tipo": "repeticiones",
+    "categoria": "Espalda",
+    "imagen": "remo-inclinado-con-mancuernas",
+    "descanso": 12
+  },
+  {
+    "id": 34,
+    "nombre": "Esfinje",
+    "tipo": "tiempo",
+    "categoria": "Espalda",
+    "imagen": "esfinje",
+    "descanso": 12
+  },
+  {
+    "id": 35,
+    "nombre": "Juntar hombros",
+    "tipo": "repeticiones",
+    "categoria": "Espalda",
+    "imagen": "juntar-hombros",
+    "descanso": 12
+  },
+  {
+    "id": 36,
+    "nombre": "Remo con barra",
+    "tipo": "repeticiones",
+    "categoria": "Hombro",
+    "imagen": "remo-con-barra",
+    "descanso": 12
+  },
+  {
+    "id": 37,
+    "nombre": "Press banca",
+    "tipo": "repeticiones",
+    "categoria": "Hombro",
+    "imagen": "press-banca",
+    "descanso": 12
+  },
+  {
+    "id": 38,
+    "nombre": "Elevaciones laterales",
+    "tipo": "repeticiones",
+    "categoria": "Hombro",
+    "imagen": "elevaciones-laterales",
+    "descanso": 12
+  },
+  {
+    "id": 39,
+    "nombre": "Prensa de lucio",
+    "tipo": "repeticiones",
+    "categoria": "Hombro",
+    "imagen": "prensa-de-lucio",
+    "descanso": 12
+  },
+  {
+    "id": 40,
+    "nombre": "Sentadilla con barra",
+    "tipo": "repeticiones",
+    "categoria": "Hombro",
+    "imagen": "sentadilla-con-barra",
+    "descanso": 12
+  },
+  {
+    "id": 41,
+    "nombre": "Sonria + Oh",
+    "tipo": "tiempo",
+    "categoria": "Mewign",
+    "imagen": "sonrisa-o",
+    "descanso": 12
+  }
+]
