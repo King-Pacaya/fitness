@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Rutinas</title>
+  <link rel="shortcut icon" href="favicon.png">
+  <!-- CSS -->
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet"/>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/5.0.0/normalize.min.css">
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;700&display=swap" rel="stylesheet">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <style>
+    /* Aplicar Montserrat a todos los elementos */
+    * { font-family: 'Montserrat', sans-serif; }
+  </style>
+</head>
+<body class="bg-gray-100">
+  <div class="container mx-auto p-4">
+    <h1 class="text-3xl font-bold text-green-600 mb-4 text-center">Rutinas</h1>
+    <!-- Contenedor del carousel (rutinas se muestran horizontalmente) -->
+    <div id="carouselContainer" class="flex justify-center items-center">
+      <div id="routineCarousel" class="grid grid-cols-4 gap-4">
+        <!-- Se generan las tarjetas de rutina aquí -->
+      </div>
+    </div>
+  </div>
+
+  <script>
+    let routines = [];
+    let selectedIndex = 0;
+    // Se supone que en localStorage se guarda un arreglo de ids de rutinas completadas
+    let completedRoutines = JSON.parse(localStorage.getItem('completedRoutines')) || [];
+
+    async function loadRoutines() {
+      try {
+        const response = await fetch('todas_las_rutinas.json');
+        if (!response.ok) throw new Error("Error al cargar el JSON");
+        routines = await response.json();
+        // Buscar la primera rutina no completada y asignar su índice a selectedIndex
+        const recommendedIndex = routines.findIndex(r => !completedRoutines.includes(r.id));
+        selectedIndex = (recommendedIndex !== -1) ? recommendedIndex : 0;
+        renderCarousel();
+      } catch(error) {
+        console.error(error);
+      }
+    }
+
+    function renderCarousel() {
+      const carousel = document.getElementById('routineCarousel');
+      carousel.innerHTML = '';
+      routines.forEach((routine, index) => {
+        // Determinar si la rutina está completada
+        const isCompleted = completedRoutines.includes(routine.id);
+        const statusText = isCompleted ? 'Completado' : 'Incompleto';
+        // Agregar estilo para la rutina seleccionada
+        const selectedClass = (index === selectedIndex) ? 'border-4 border-green-600' : '';
+        // Crear la tarjeta
+        const card = document.createElement('div');
+        card.className = `bg-white p-4 rounded-lg shadow-md cursor-pointer ${selectedClass} transition`;
+        card.style.minWidth = '250px';
+        // Generar un resumen simple: mostrar los nombres de los dos primeros ejercicios (o "y más")
+        let summary = "";
+        if (routine.exercises && routine.exercises.length > 0) {
+          const titles = routine.exercises.map(ex => ex.title);
+          summary = titles.slice(0, 2).join(", ") + (titles.length > 2 ? " y más" : "");
+        }
+        card.innerHTML = `
+          <h3 class="text-lg font-bold text-green-600 mb-2">${routine.name}</h3>
+          <p class="text-sm text-gray-700 mb-2">${summary}</p>
+          <div class="text-center text-sm font-medium ${isCompleted ? 'text-green-600' : 'text-red-600'}">
+            ${statusText}
+          </div>
+        `;
+        // Al hacer clic en la tarjeta se selecciona esa rutina
+        card.addEventListener('click', () => {
+          selectedIndex = index;
+          renderCarousel();
+        });
+        carousel.appendChild(card);
+      });
+    }
+
+    // Navegación con las flechas y Enter
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'ArrowRight') {
+        if (selectedIndex < routines.length - 1) {
+          selectedIndex++;
+          renderCarousel();
+        }
+      } else if (e.key === 'ArrowLeft') {
+        if (selectedIndex > 0) {
+          selectedIndex--;
+          renderCarousel();
+        }
+      } else if (e.key === 'Enter') {
+        // Redirige a ejecutar.html con el id de la rutina seleccionada
+        const selectedRoutine = routines[selectedIndex];
+        if (selectedRoutine) {
+          window.location.href = `ejecutar.html?id=${selectedRoutine.id}`;
+        }
+      }
+    });
+
+    loadRoutines();
+  </script>
+</body>
+</html>

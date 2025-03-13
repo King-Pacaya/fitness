@@ -1,0 +1,794 @@
+[
+  {
+    "id": 1741895828118,
+    "name": "1° Día",
+    "exercises": [
+      {
+        "id": 1741619274885,
+        "title": "Escalada de montaña",
+        "type": "time",
+        "time": "30",
+        "reps": null,
+        "images": [
+          "multimedia/escalada-de-montaña.png"
+        ]
+      },
+      {
+        "id": 1741618639605,
+        "title": "Squats",
+        "type": "reps",
+        "time": null,
+        "reps": "16",
+        "images": [
+          "multimedia/squats.png",
+          "multimedia/squats-2.png"
+        ]
+      },
+      {
+        "id": 1741618654910,
+        "title": "Elevaciones de rodillas",
+        "type": "time",
+        "time": "30",
+        "reps": null,
+        "images": [
+          "multimedia/elevaciones-de-rodillas.png"
+        ]
+      },
+      {
+        "id": 1741618667805,
+        "title": "Flexiones",
+        "type": "reps",
+        "time": null,
+        "reps": "5",
+        "images": [
+          "multimedia/flexiones.png",
+          "multimedia/flexiones-2.png"
+        ]
+      },
+      {
+        "id": 1741618723925,
+        "title": "Crunch inverso",
+        "type": "reps",
+        "time": null,
+        "reps": "16",
+        "images": [
+          "multimedia/crunch-inverso.png",
+          "multimedia/crunch-inverso-2.png"
+        ]
+      },
+      {
+        "id": 1741618733853,
+        "title": "Tablón",
+        "type": "time",
+        "time": "30",
+        "reps": null,
+        "images": [
+          "multimedia/tablon.png"
+        ]
+      },
+      {
+        "id": 1741618639605,
+        "title": "Squats",
+        "type": "reps",
+        "time": null,
+        "reps": "16",
+        "images": [
+          "multimedia/squats.png",
+          "multimedia/squats-2.png"
+        ]
+      },
+      {
+        "id": 1741618654910,
+        "title": "Elevaciones de rodillas",
+        "type": "time",
+        "time": "30",
+        "reps": null,
+        "images": [
+          "multimedia/elevaciones-de-rodillas.png"
+        ]
+      },
+      {
+        "id": 1741618667805,
+        "title": "Flexiones",
+        "type": "reps",
+        "time": null,
+        "reps": "5",
+        "images": [
+          "multimedia/flexiones.png",
+          "multimedia/flexiones-2.png"
+        ]
+      },
+      {
+        "id": 1741618723925,
+        "title": "Crunch inverso",
+        "type": "reps",
+        "time": null,
+        "reps": "16",
+        "images": [
+          "multimedia/crunch-inverso.png",
+          "multimedia/crunch-inverso-2.png"
+        ]
+      },
+      {
+        "id": 1741618733853,
+        "title": "Tablón",
+        "type": "time",
+        "time": "30",
+        "reps": null,
+        "images": [
+          "multimedia/tablon.png"
+        ]
+      },
+      {
+        "id": 1741618770061,
+        "title": "Estiramiento de cobra",
+        "type": "time",
+        "time": "30",
+        "reps": null,
+        "images": [
+          "multimedia/estiramiento-de-cobra.png"
+        ]
+      }
+    ]
+  },
+  {
+    "id": 1741896771470,
+    "name": "2° Día",
+    "exercises": [
+      {
+        "id": 1741619274885,
+        "title": "Escalada de montaña",
+        "type": "time",
+        "time": "30",
+        "reps": null,
+        "images": [
+          "multimedia/escalada-de-montaña.png"
+        ]
+      },
+      {
+        "id": 1741621548459,
+        "title": "Tríceps en silla",
+        "type": "reps",
+        "time": null,
+        "reps": "16",
+        "images": [
+          "multimedia/triceps-en-silla.png",
+          "multimedia/triceps-en-silla-2.png"
+        ]
+      },
+      {
+        "id": 1741621570170,
+        "title": "Saltos de tijera",
+        "type": "time",
+        "time": "30",
+        "reps": null,
+        "images": [
+          "multimedia/saltos-de-tijera.png",
+          "multimedia/saltos-de-tijera-2.png"
+        ]
+      },
+      {
+        "id": 1741621595930,
+        "title": "Crunch de brazos estirados",
+        "type": "reps",
+        "time": null,
+        "reps": "16",
+        "images": [
+          "multimedia/crunch-de-brazos-estirados.png",
+          "multimedia/crunch-de-brazos-estirados-2.png"
+        ]
+      },
+      {
+        "id": 1741621609250,
+        "title": "Crunch de bicicleta",
+        "type": "reps",
+        "time": null,
+        "reps": "16",
+        "images": [
+          "multimedia/crunch-de-bicicleta.png",
+          "multimedia/crunch-de-bicicleta-2.png"
+        ]
+      },
+      {
+        "id": 1741618733853,
+        "title": "Tablón",
+        "type": "time",
+        "time": "30",
+        "reps": null,
+        "images": [
+          "multimedia/tablon.png"
+        ]
+      },
+      {
+        "id": 1741621548459,
+        "title": "Tríceps en silla",
+        "type": "reps",
+        "time": null,
+        "reps": "16",
+        "images": [
+          "multimedia/triceps-en-silla.png",
+          "multimedia/triceps-en-silla-2.png"
+        ]
+      },
+      {
+        "id": 1741621570170,
+        "title": "Saltos de tijera",
+        "type": "time",
+        "time": "30",
+        "reps": null,
+        "images": [
+          "multimedia/saltos-de-tijera.png",
+          "multimedia/saltos-de-tijera-2.png"
+        ]
+      },
+      {
+        "id": 1741621595930,
+        "title": "Crunch de brazos estirados",
+        "type": "reps",
+        "time": null,
+        "reps": "16",
+        "images": [
+          "multimedia/crunch-de-brazos-estirados.png",
+          "multimedia/crunch-de-brazos-estirados-2.png"
+        ]
+      },
+      {
+        "id": 1741621609250,
+        "title": "Crunch de bicicleta",
+        "type": "reps",
+        "time": null,
+        "reps": "16",
+        "images": [
+          "multimedia/crunch-de-bicicleta.png",
+          "multimedia/crunch-de-bicicleta-2.png"
+        ]
+      },
+      {
+        "id": 1741618733853,
+        "title": "Tablón",
+        "type": "time",
+        "time": "30",
+        "reps": null,
+        "images": [
+          "multimedia/tablon.png"
+        ]
+      },
+      {
+        "id": 1741618770061,
+        "title": "Estiramiento de cobra",
+        "type": "time",
+        "time": "30",
+        "reps": null,
+        "images": [
+          "multimedia/estiramiento-de-cobra.png"
+        ]
+      }
+    ]
+  },
+  {
+    "id": 1741896852871,
+    "name": "3° Día",
+    "exercises": [
+      {
+        "id": 1741619274885,
+        "title": "Escalada de montaña",
+        "type": "time",
+        "time": "30",
+        "reps": null,
+        "images": [
+          "multimedia/escalada-de-montaña.png"
+        ]
+      },
+      {
+        "id": 1741621570170,
+        "title": "Saltos de tijera",
+        "type": "time",
+        "time": "30",
+        "reps": null,
+        "images": [
+          "multimedia/saltos-de-tijera.png",
+          "multimedia/saltos-de-tijera-2.png"
+        ]
+      },
+      {
+        "id": 1741622208442,
+        "title": "Crunch abdominales",
+        "type": "reps",
+        "time": null,
+        "reps": "16",
+        "images": [
+          "multimedia/crunch-abdominales.png",
+          "multimedia/crunch-abdominales-2.png"
+        ]
+      },
+      {
+        "id": 1741622230066,
+        "title": "Toque al talón",
+        "type": "reps",
+        "time": null,
+        "reps": "16",
+        "images": [
+          "multimedia/toque-al-talón.png"
+        ]
+      },
+      {
+        "id": 1741622260818,
+        "title": "Tijeras verticales",
+        "type": "time",
+        "time": "30",
+        "reps": null,
+        "images": [
+          "multimedia/tijeras-verticales.png"
+        ]
+      },
+      {
+        "id": 1741618733853,
+        "title": "Tablón",
+        "type": "time",
+        "time": "30",
+        "reps": null,
+        "images": [
+          "multimedia/tablon.png"
+        ]
+      },
+      {
+        "id": 1741621570170,
+        "title": "Saltos de tijera",
+        "type": "time",
+        "time": "30",
+        "reps": null,
+        "images": [
+          "multimedia/saltos-de-tijera.png",
+          "multimedia/saltos-de-tijera-2.png"
+        ]
+      },
+      {
+        "id": 1741622208442,
+        "title": "Crunch abdominales",
+        "type": "reps",
+        "time": null,
+        "reps": "16",
+        "images": [
+          "multimedia/crunch-abdominales.png",
+          "multimedia/crunch-abdominales-2.png"
+        ]
+      },
+      {
+        "id": 1741622230066,
+        "title": "Toque al talón",
+        "type": "reps",
+        "time": null,
+        "reps": "16",
+        "images": [
+          "multimedia/toque-al-talón.png"
+        ]
+      },
+      {
+        "id": 1741622260818,
+        "title": "Tijeras verticales",
+        "type": "time",
+        "time": "30",
+        "reps": null,
+        "images": [
+          "multimedia/tijeras-verticales.png"
+        ]
+      },
+      {
+        "id": 1741618733853,
+        "title": "Tablón",
+        "type": "time",
+        "time": "30",
+        "reps": null,
+        "images": [
+          "multimedia/tablon.png"
+        ]
+      },
+      {
+        "id": 1741618770061,
+        "title": "Estiramiento de cobra",
+        "type": "time",
+        "time": "30",
+        "reps": null,
+        "images": [
+          "multimedia/estiramiento-de-cobra.png"
+        ]
+      }
+    ]
+  },
+  {
+    "id": 1741896924718,
+    "name": "4° Día",
+    "exercises": [
+      {
+        "id": 1741622881545,
+        "title": "Saltos con cuerda",
+        "type": "time",
+        "time": "30",
+        "reps": null,
+        "images": [
+          "multimedia/saltos-con-cuerda.png"
+        ]
+      },
+      {
+        "id": 1741622898017,
+        "title": "Zancada frontal",
+        "type": "reps",
+        "time": null,
+        "reps": "16",
+        "images": [
+          "multimedia/zancada-frontal.png",
+          "multimedia/zancada-frontal-2.png"
+        ]
+      },
+      {
+        "id": 1741618667805,
+        "title": "Flexiones",
+        "type": "reps",
+        "time": null,
+        "reps": "5",
+        "images": [
+          "multimedia/flexiones.png",
+          "multimedia/flexiones-2.png"
+        ]
+      },
+      {
+        "id": 1741618723925,
+        "title": "Crunch inverso",
+        "type": "reps",
+        "time": null,
+        "reps": "16",
+        "images": [
+          "multimedia/crunch-inverso.png",
+          "multimedia/crunch-inverso-2.png"
+        ]
+      },
+      {
+        "id": 1741622230066,
+        "title": "Toque al talón",
+        "type": "reps",
+        "time": null,
+        "reps": "16",
+        "images": [
+          "multimedia/toque-al-talón.png"
+        ]
+      },
+      {
+        "id": 1741618733853,
+        "title": "Tablón",
+        "type": "time",
+        "time": "30",
+        "reps": null,
+        "images": [
+          "multimedia/tablon.png"
+        ]
+      },
+      {
+        "id": 1741622898017,
+        "title": "Zancada frontal",
+        "type": "reps",
+        "time": null,
+        "reps": "16",
+        "images": [
+          "multimedia/zancada-frontal.png",
+          "multimedia/zancada-frontal-2.png"
+        ]
+      },
+      {
+        "id": 1741618667805,
+        "title": "Flexiones",
+        "type": "reps",
+        "time": null,
+        "reps": "5",
+        "images": [
+          "multimedia/flexiones.png",
+          "multimedia/flexiones-2.png"
+        ]
+      },
+      {
+        "id": 1741618723925,
+        "title": "Crunch inverso",
+        "type": "reps",
+        "time": null,
+        "reps": "16",
+        "images": [
+          "multimedia/crunch-inverso.png",
+          "multimedia/crunch-inverso-2.png"
+        ]
+      },
+      {
+        "id": 1741622230066,
+        "title": "Toque al talón",
+        "type": "reps",
+        "time": null,
+        "reps": "16",
+        "images": [
+          "multimedia/toque-al-talón.png"
+        ]
+      },
+      {
+        "id": 1741618733853,
+        "title": "Tablón",
+        "type": "time",
+        "time": "30",
+        "reps": null,
+        "images": [
+          "multimedia/tablon.png"
+        ]
+      },
+      {
+        "id": 1741618770061,
+        "title": "Estiramiento de cobra",
+        "type": "time",
+        "time": "30",
+        "reps": null,
+        "images": [
+          "multimedia/estiramiento-de-cobra.png"
+        ]
+      }
+    ]
+  },
+  {
+    "id": 1741902877009,
+    "name": "5° Día",
+    "exercises": [
+      {
+        "id": 1741622881545,
+        "title": "Saltos con cuerda",
+        "type": "time",
+        "time": "30",
+        "reps": null,
+        "images": [
+          "multimedia/saltos-con-cuerda.png"
+        ]
+      },
+      {
+        "id": 1741621548459,
+        "title": "Tríceps en silla",
+        "type": "reps",
+        "time": null,
+        "reps": "16",
+        "images": [
+          "multimedia/triceps-en-silla.png",
+          "multimedia/triceps-en-silla-2.png"
+        ]
+      },
+      {
+        "id": 1741618654910,
+        "title": "Elevaciones de rodillas",
+        "type": "time",
+        "time": "30",
+        "reps": null,
+        "images": [
+          "multimedia/elevaciones-de-rodillas.png"
+        ]
+      },
+      {
+        "id": 1741623856841,
+        "title": "Sentadillas de pulso",
+        "type": "time",
+        "time": "30",
+        "reps": null,
+        "images": [
+          "multimedia/sentadillas-de-pulso.png"
+        ]
+      },
+      {
+        "id": 1741621609250,
+        "title": "Crunch de bicicleta",
+        "type": "reps",
+        "time": null,
+        "reps": "16",
+        "images": [
+          "multimedia/crunch-de-bicicleta.png",
+          "multimedia/crunch-de-bicicleta-2.png"
+        ]
+      },
+      {
+        "id": 1741618733853,
+        "title": "Tablón",
+        "type": "time",
+        "time": "30",
+        "reps": null,
+        "images": [
+          "multimedia/tablon.png"
+        ]
+      },
+      {
+        "id": 1741621548459,
+        "title": "Tríceps en silla",
+        "type": "reps",
+        "time": null,
+        "reps": "16",
+        "images": [
+          "multimedia/triceps-en-silla.png",
+          "multimedia/triceps-en-silla-2.png"
+        ]
+      },
+      {
+        "id": 1741618654910,
+        "title": "Elevaciones de rodillas",
+        "type": "time",
+        "time": "30",
+        "reps": null,
+        "images": [
+          "multimedia/elevaciones-de-rodillas.png"
+        ]
+      },
+      {
+        "id": 1741623856841,
+        "title": "Sentadillas de pulso",
+        "type": "time",
+        "time": "30",
+        "reps": null,
+        "images": [
+          "multimedia/sentadillas-de-pulso.png"
+        ]
+      },
+      {
+        "id": 1741621609250,
+        "title": "Crunch de bicicleta",
+        "type": "reps",
+        "time": null,
+        "reps": "16",
+        "images": [
+          "multimedia/crunch-de-bicicleta.png",
+          "multimedia/crunch-de-bicicleta-2.png"
+        ]
+      },
+      {
+        "id": 1741618733853,
+        "title": "Tablón",
+        "type": "time",
+        "time": "30",
+        "reps": null,
+        "images": [
+          "multimedia/tablon.png"
+        ]
+      },
+      {
+        "id": 1741618770061,
+        "title": "Estiramiento de cobra",
+        "type": "time",
+        "time": "30",
+        "reps": null,
+        "images": [
+          "multimedia/estiramiento-de-cobra.png"
+        ]
+      }
+    ]
+  },
+  {
+    "id": 1741902935905,
+    "name": "6° Día",
+    "exercises": [
+      {
+        "id": 1741622881545,
+        "title": "Saltos con cuerda",
+        "type": "time",
+        "time": "30",
+        "reps": null,
+        "images": [
+          "multimedia/saltos-con-cuerda.png"
+        ]
+      },
+      {
+        "id": 1741621548459,
+        "title": "Tríceps en silla",
+        "type": "reps",
+        "time": null,
+        "reps": "16",
+        "images": [
+          "multimedia/triceps-en-silla.png",
+          "multimedia/triceps-en-silla-2.png"
+        ]
+      },
+      {
+        "id": 1741622898017,
+        "title": "Zancada frontal",
+        "type": "reps",
+        "time": null,
+        "reps": "16",
+        "images": [
+          "multimedia/zancada-frontal.png",
+          "multimedia/zancada-frontal-2.png"
+        ]
+      },
+      {
+        "id": 1741621595930,
+        "title": "Crunch de brazos estirados",
+        "type": "reps",
+        "time": null,
+        "reps": "16",
+        "images": [
+          "multimedia/crunch-de-brazos-estirados.png",
+          "multimedia/crunch-de-brazos-estirados-2.png"
+        ]
+      },
+      {
+        "id": 1741618723925,
+        "title": "Crunch inverso",
+        "type": "reps",
+        "time": null,
+        "reps": "16",
+        "images": [
+          "multimedia/crunch-inverso.png",
+          "multimedia/crunch-inverso-2.png"
+        ]
+      },
+      {
+        "id": 1741618733853,
+        "title": "Tablón",
+        "type": "time",
+        "time": "30",
+        "reps": null,
+        "images": [
+          "multimedia/tablon.png"
+        ]
+      },
+      {
+        "id": 1741621548459,
+        "title": "Tríceps en silla",
+        "type": "reps",
+        "time": null,
+        "reps": "16",
+        "images": [
+          "multimedia/triceps-en-silla.png",
+          "multimedia/triceps-en-silla-2.png"
+        ]
+      },
+      {
+        "id": 1741622898017,
+        "title": "Zancada frontal",
+        "type": "reps",
+        "time": null,
+        "reps": "16",
+        "images": [
+          "multimedia/zancada-frontal.png",
+          "multimedia/zancada-frontal-2.png"
+        ]
+      },
+      {
+        "id": 1741621595930,
+        "title": "Crunch de brazos estirados",
+        "type": "reps",
+        "time": null,
+        "reps": "16",
+        "images": [
+          "multimedia/crunch-de-brazos-estirados.png",
+          "multimedia/crunch-de-brazos-estirados-2.png"
+        ]
+      },
+      {
+        "id": 1741618723925,
+        "title": "Crunch inverso",
+        "type": "reps",
+        "time": null,
+        "reps": "16",
+        "images": [
+          "multimedia/crunch-inverso.png",
+          "multimedia/crunch-inverso-2.png"
+        ]
+      },
+      {
+        "id": 1741618733853,
+        "title": "Tablón",
+        "type": "time",
+        "time": "30",
+        "reps": null,
+        "images": [
+          "multimedia/tablon.png"
+        ]
+      },
+      {
+        "id": 1741618770061,
+        "title": "Estiramiento de cobra",
+        "type": "time",
+        "time": "30",
+        "reps": null,
+        "images": [
+          "multimedia/estiramiento-de-cobra.png"
+        ]
+      }
+    ]
+  }
+]
