@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <!-- Meta -->
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <!-- Icono de página -->
+  <link rel="shortcut icon" href="favicon.png">
+  <!-- CSS -->
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet"/>
+  <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/5.0.0/normalize.min.css">
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;700&display=swap" rel="stylesheet">
+  <!-- Tailwind -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <!-- Estilos personalizados -->
+  <style>
+    * {
+      font-family: 'Montserrat', sans-serif;
+    }
+  </style>
+  <title>Creador de Rutinas</title>
+</head>
+<body class="bg-gray-100">
+  <div class="container mx-auto p-4">
+    <h1 class="text-3xl font-bold text-green-600 mb-6 text-center">Creador de Rutinas</h1>
+    
+    <!-- Sección de Ejercicios Existentes -->
+    <div class="bg-white p-6 rounded-lg shadow-md mb-6">
+      <div class="flex justify-between items-center mb-4">
+        <h2 class="text-2xl font-semibold text-green-600">Ejercicios Existentes</h2>
+        <div class="flex gap-2">
+          <button onclick="openModal()" class="bg-green-600 text-white p-2 rounded-md hover:bg-green-700">
+            <i class="fas fa-plus"></i>
+          </button>
+          <button onclick="downloadExercises()" class="bg-green-600 text-white p-2 rounded-md hover:bg-green-700">
+            <i class="fas fa-download"></i>
+          </button>
+          <label class="bg-green-600 text-white p-2 rounded-md hover:bg-green-700 cursor-pointer inline-block">
+            <i class="fas fa-upload"></i>
+            <input type="file" id="uploadExercises" class="hidden" accept="application/json" onchange="uploadExercises(event)">
+          </label>
+        </div>
+      </div>
+      <div id="exerciseGrid" class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
+        <!-- Tarjetas de ejercicios -->
+      </div>
+    </div>
+    
+    <!-- Sección de Rutinas Creadas -->
+    <div class="bg-white p-6 rounded-lg shadow-md">
+      <div class="flex justify-between items-center mb-4">
+        <h2 class="text-2xl font-semibold text-green-600">Rutinas Creadas</h2>
+        <div class="flex gap-2">
+          <button onclick="downloadAllRoutines()" class="bg-green-600 text-white p-2 rounded-md hover:bg-green-700">
+            <i class="fas fa-download"></i>
+          </button>
+          <button onclick="downloadSelectedRoutines()" class="bg-green-600 text-white p-2 rounded-md hover:bg-green-700">
+            <i class="fas fa-file-export"></i>
+          </button>
+          <button onclick="openRoutineModal()" class="bg-green-600 text-white p-2 rounded-md hover:bg-green-700">
+            <i class="fas fa-plus"></i>
+          </button>
+        </div>
+      </div>
+      <div id="routineList" class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
+        <!-- Tarjetas de rutinas se generan desde JavaScript -->
+      </div>
+    </div>
+    
+    <!-- Modal para crear/editar ejercicio -->
+    <div id="exerciseModal" class="fixed inset-0 bg-black bg-opacity-50 flex justify-center items-center z-50 hidden">
+      <div class="bg-white p-6 rounded-lg shadow-md w-96">
+        <h2 id="modalTitle" class="text-2xl font-semibold text-green-600 mb-4">Crear Ejercicio</h2>
+        <form id="exerciseForm" class="space-y-4">
+          <div>
+            <label for="exerciseTitle" class="block text-sm font-medium text-gray-700">Título del Ejercicio</label>
+            <input type="text" id="exerciseTitle" name="exerciseTitle" class="mt-1 block w-full p-2 border border-gray-300 rounded-md" required>
+          </div>
+          <div>
+            <label class="block text-sm font-medium text-gray-700">Tipo de Ejercicio</label>
+            <div class="mt-1 space-x-4">
+              <label class="inline-flex items-center">
+                <input type="radio" name="exerciseType" value="time" class="form-radio text-green-600" required>
+                <span class="ml-2">Por Tiempo</span>
+              </label>
+              <label class="inline-flex items-center">
+                <input type="radio" name="exerciseType" value="reps" class="form-radio text-green-600" required>
+                <span class="ml-2">Por Repeticiones</span>
+              </label>
+            </div>
+          </div>
+          <div id="timeField" class="hidden">
+            <label for="exerciseTime" class="block text-sm font-medium text-gray-700">Tiempo (en segundos)</label>
+            <input type="number" id="exerciseTime" name="exerciseTime" class="mt-1 block w-full p-2 border border-gray-300 rounded-md">
+          </div>
+          <div id="repsField" class="hidden">
+            <label for="exerciseReps" class="block text-sm font-medium text-gray-700">Número de Repeticiones</label>
+            <input type="number" id="exerciseReps" name="exerciseReps" class="mt-1 block w-full p-2 border border-gray-300 rounded-md">
+          </div>
+          <!-- Nuevo bloque para subir imágenes -->
+          <div>
+            <label for="exerciseImages" class="block text-sm font-medium text-gray-700">Imágenes (opcional, máximo 2)</label>
+            <input type="file" id="exerciseImages" name="exerciseImages" accept="image/*" multiple class="mt-1 block w-full">
+            <div id="exerciseImagePreview" class="mt-2"></div>
+          </div>
+          <button type="submit" id="modalSubmitButton" class="w-full bg-green-600 text-white p-2 rounded-md hover:bg-green-700">
+            <i class="fas fa-plus mr-2"></i> Crear Ejercicio
+          </button>
+        </form>
+      </div>
+    </div>
+    
+    <!-- Modal para crear/editar rutina -->
+    <div id="routineModal" class="fixed inset-0 bg-black bg-opacity-50 flex justify-center items-center z-50 hidden">
+      <div class="bg-white p-6 rounded-lg shadow-md w-11/12 md:w-3/4 lg:w-1/2 max-h-[90vh] overflow-y-auto">
+        <h2 id="routineModalTitle" class="text-2xl font-semibold text-green-600 mb-4">Crear Rutina</h2>
+        <div class="flex gap-6">
+          <!-- Lista de ejercicios disponibles para la rutina -->
+          <div class="w-1/2">
+            <h3 class="text-lg font-semibold text-green-600 mb-2">Ejercicios Disponibles</h3>
+            <input type="text" id="searchExerciseInput" placeholder="Buscar ejercicios" class="w-full p-2 border border-gray-300 rounded-md mb-2">
+            <div id="availableExercises" class="space-y-2 max-h-64 overflow-y-auto">
+              <!-- Se mostrarán los ejercicios filtrados -->
+            </div>
+          </div>
+          <!-- Rutina en construcción -->
+          <div class="w-1/2">
+            <h3 class="text-lg font-semibold text-green-600 mb-2">Rutina</h3>
+            <input type="text" id="routineName" placeholder="Nombre de la rutina" class="w-full p-2 border border-gray-300 rounded-md mb-4">
+            <div id="routineExercises" class="space-y-2 max-h-64 overflow-y-auto">
+              <!-- Se mostrarán los ejercicios seleccionados -->
+            </div>
+          </div>
+        </div>
+        <div class="mt-4 flex justify-end gap-2">
+          <button onclick="closeRoutineModal()" class="bg-gray-300 text-gray-700 p-2 rounded-md hover:bg-gray-400">Cancelar</button>
+          <button id="saveRoutineButton" onclick="saveRoutine()" class="bg-green-600 text-white p-2 rounded-md hover:bg-green-700">
+            <i class="fas fa-save mr-2"></i> Guardar Rutina
+          </button>
+        </div>
+      </div>
+    </div>
+    
+  </div>
+  <script src="maker.js"></script>
+</body>
+</html>

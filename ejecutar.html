@@ -40,6 +40,16 @@
       </button>
     </div>
   </div>
+  
+  <!-- Background Music: iframe que reproduce la radio de YouTube (visible para desarrollo) -->
+  <div style="display: none;">
+    <iframe id="bgMusic" 
+            src="https://www.youtube.com/embed/L2pihJJpP80?autoplay=1&list=RDL2pihJJpP80&start_radio=1&shuffle=1" 
+            frameborder="0" 
+            allow="autoplay" 
+            allowfullscreen>
+    </iframe>
+  </div>
 
   <script>
     // Función para obtener parámetros de la URL (ej: ?id=1741621155995)
@@ -123,10 +133,10 @@
       actionButton.classList.add('hidden');
 
       // Mostrar información del siguiente ejercicio (el primero)
-      if(routine.exercises.length > 0) {
+      if (routine.exercises.length > 0) {
         let nextExercise = routine.exercises[0];
         nextExerciseInfoElem.textContent = "Siguiente ejercicio: " + nextExercise.title;
-        if(nextExercise.images && nextExercise.images.length > 0) {
+        if (nextExercise.images && nextExercise.images.length > 0) {
           exerciseImageElem.src = nextExercise.images[0];
           exerciseImageContainer.style.display = 'block';
         } else {
@@ -230,7 +240,7 @@
       if (routine.exercises[currentExerciseIndex + 1]) {
         let nextExercise = routine.exercises[currentExerciseIndex + 1];
         nextExerciseInfoElem.textContent = "Siguiente ejercicio: " + nextExercise.title;
-        if(nextExercise.images && nextExercise.images.length > 0) {
+        if (nextExercise.images && nextExercise.images.length > 0) {
           exerciseImageElem.src = nextExercise.images[0];
           exerciseImageContainer.style.display = 'block';
         } else {
@@ -300,6 +310,18 @@
         if (imageInterval) { clearInterval(imageInterval); imageInterval = null; }
         currentExerciseIndex -= 2;
         startNextExercise();
+      }
+      // Con flecha arriba se activa el modo pantalla completa
+      if (e.key === 'ArrowUp') {
+        if (!document.fullscreenElement) {
+          document.documentElement.requestFullscreen();
+        }
+      }
+      // Con flecha abajo se sale del modo pantalla completa
+      if (e.key === 'ArrowDown') {
+        if (document.fullscreenElement) {
+          document.exitFullscreen();
+        }
       }
     });
 
