@@ -3,63 +3,176 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Rutinas</title>
+  <title>Mis Rutinas</title>
   <link rel="shortcut icon" href="favicon.png">
   <!-- CSS -->
-  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet"/>
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/5.0.0/normalize.min.css">
-  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;700&display=swap" rel="stylesheet">
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/5.0.0/normalize.min.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;700&display=swap" rel="stylesheet" />
   <script src="https://cdn.tailwindcss.com"></script>
   <style>
-    /* Aplicar Montserrat a todos los elementos */
     * { font-family: 'Montserrat', sans-serif; }
   </style>
 </head>
 <body class="bg-gray-100">
-  <div class="container mx-auto p-4">
+
+  <!-- Sección Home: Listado de rutinas -->
+  <div id="homeSection" class="container mx-auto p-4">
     <h1 class="text-3xl font-bold text-green-600 mb-4 text-center">Rutinas</h1>
-    <!-- Contenedor del carousel (rutinas se muestran horizontalmente) -->
-    <div id="carouselContainer" class="flex justify-center items-center">
-      <div id="routineCarousel" class="grid grid-cols-4 gap-4">
-        <!-- Se generan las tarjetas de rutina aquí -->
+    <!-- Grid de 4 elementos por fila -->
+    <div id="routineCarousel" class="grid grid-cols-4 gap-4">
+      <!-- Tarjetas de rutina generadas en JS -->
+    </div>
+  </div>
+
+  <!-- Sección Ejercicio: Se muestra al ejecutar una rutina -->
+  <div id="exerciseSection" style="display: none;">
+    <!-- Header sin fondo ni sombra -->
+    <header class="w-full p-4 flex flex-col items-center">
+      <h1 id="routineName" class="text-3xl font-bold text-green-600 text-center mb-2"></h1>
+      <div id="progressTimeline" class="w-full flex space-x-1"></div>
+    </header>
+    <div id="mainDisplay" class="flex flex-col items-center justify-center p-4">
+      <div id="exerciseDetails" class="flex flex-col items-center justify-center">
+        <div id="exerciseName" class="text-3xl font-bold mb-2"></div>
+        <div id="exerciseMetric" class="text-2xl text-green-600 mb-2"></div>
+        <div id="exerciseImageContainer" class="mb-4">
+          <img id="exerciseImage" src="" alt="Imagen del ejercicio" class="w-full max-w-md object-contain">
+        </div>
+        <div id="nextExerciseInfo" class="text-xl font-medium mb-2"></div>
+        <!-- Botón "Listo" estilizado -->
+        <button id="actionButton" class="bg-green-600 text-white px-4 py-2 rounded-md hover:bg-green-700 hidden">
+          Listo
+        </button>
       </div>
     </div>
   </div>
 
+  <!-- Background Music: iframe visible para desarrollo -->
+  <div style="display: none;">
+    <div id="bgMusicContainer">
+      <div id="bgMusic"></div>
+    </div>
+  </div>
+
   <script>
+    /********** Música Aleatoria con IFrame API **********/
+    const musicLinks = [
+      "https://www.youtube.com/embed/UzDaAYc6OS8?autoplay=1&mute=0&list=RDUzDaAYc6OS8&start_radio=1&rv=UzDaAYc6OS8",
+      "https://www.youtube.com/embed/?autoplay=1&mute=0&listType=playlist&list=PLO5-wmu3KQti9MBERylN1L6FrVRzzaNaF",
+      "https://www.youtube.com/embed/?autoplay=1&mute=0&listType=playlist&list=PLO5-wmu3KQtiFbix4NYzRM2sTYnPE745Q",
+      "https://www.youtube.com/embed/?autoplay=1&mute=0&listType=playlist&list=PLO5-wmu3KQth6P8pKndWNMoFIJOoUOUkk",
+      "https://www.youtube.com/embed/?autoplay=1&mute=0&listType=playlist&list=PLO5-wmu3KQtheiKqY7oT6tOwRvPGK0S8B",
+      "https://www.youtube.com/embed/?autoplay=1&mute=0&listType=playlist&list=PLO5-wmu3KQtiqXVxJ9k2TZGtT8xr4HNrG",
+      "https://www.youtube.com/embed/L2pihJJpP80?autoplay=1&mute=0&list=RDL2pihJJpP80&start_radio=1&shuffle=1"
+    ];
+    // Selecciona aleatoriamente un enlace
+    const randomIndex = Math.floor(Math.random() * musicLinks.length);
+    const initialMusicLink = musicLinks[randomIndex];
+
+    // Función para extraer parámetros de la URL
+    function parseMusicLink(url) {
+      const urlObj = new URL(url);
+      const list = urlObj.searchParams.get("list");
+      const pathParts = urlObj.pathname.split("/");
+      const videoId = pathParts[pathParts.length - 1] || null;
+      if (list) {
+        return { type: "playlist", list: list };
+      } else {
+        return { type: "video", videoId: videoId };
+      }
+    }
+
+    let bgPlayer;
+    // Carga la API de YouTube IFrame
+    var tag = document.createElement('script');
+    tag.src = "https://www.youtube.com/iframe_api";
+    var firstScriptTag = document.getElementsByTagName('script')[0];
+    firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
+
+    function onYouTubeIframeAPIReady() {
+      const parsed = parseMusicLink(initialMusicLink);
+      let playerVars = { autoplay: 1, mute: 1 }; // Iniciamos mudo para permitir el autoplay
+      if (parsed.type === "playlist") {
+        playerVars.listType = "playlist";
+        playerVars.list = parsed.list;
+      }
+      bgPlayer = new YT.Player('bgMusic', {
+        width: '560',
+        height: '315',
+        playerVars: playerVars,
+        events: {
+          'onReady': onPlayerReady,
+          'onError': onPlayerError
+        }
+      });
+    }
+
+    function onPlayerReady(event) {
+      event.target.playVideo();
+    }
+
+    function onPlayerError(event) {
+      if (bgPlayer && typeof bgPlayer.nextVideo === "function") {
+        bgPlayer.nextVideo();
+      } else {
+        const newIndex = Math.floor(Math.random() * musicLinks.length);
+        bgPlayer.loadVideoByUrl(musicLinks[newIndex]);
+      }
+    }
+
+    /********** Variables Globales y Estados (Rutinas/Ejecución) **********/
     let routines = [];
     let selectedIndex = 0;
-    // Se supone que en localStorage se guarda un arreglo de ids de rutinas completadas
-    let completedRoutines = JSON.parse(localStorage.getItem('completedRoutines')) || [];
+    let currentRoutine = null;
+    let currentExerciseIndex = -1;
+    let exerciseTimer = null;
+    let restTimer = null;
+    let currentCountdown = 0;
+    let imageInterval = null;
+    const STATE_PREPARATION = 'preparation';
+    const STATE_EXERCISE = 'exercise';
+    const STATE_REST = 'rest';
+    const STATE_COMPLETED = 'completed';
+    let currentState = '';
 
+    /********** Elementos DOM **********/
+    const homeSection = document.getElementById('homeSection');
+    const routineCarousel = document.getElementById('routineCarousel');
+    const exerciseSection = document.getElementById('exerciseSection');
+    const routineNameElem = document.getElementById('routineName');
+    const progressTimelineElem = document.getElementById('progressTimeline');
+    const exerciseNameElem = document.getElementById('exerciseName');
+    const exerciseMetricElem = document.getElementById('exerciseMetric');
+    const actionButton = document.getElementById('actionButton');
+    const nextExerciseInfoElem = document.getElementById('nextExerciseInfo');
+    const exerciseImageContainer = document.getElementById('exerciseImageContainer');
+    const exerciseImageElem = document.getElementById('exerciseImage');
+
+    /********** Cargar Rutinas **********/
     async function loadRoutines() {
       try {
         const response = await fetch('todas_las_rutinas.json');
         if (!response.ok) throw new Error("Error al cargar el JSON");
         routines = await response.json();
-        // Buscar la primera rutina no completada y asignar su índice a selectedIndex
-        const recommendedIndex = routines.findIndex(r => !completedRoutines.includes(r.id));
+        routines.forEach(r => { if (r.completed === undefined) r.completed = false; });
+        const recommendedIndex = routines.findIndex(r => !r.completed);
         selectedIndex = (recommendedIndex !== -1) ? recommendedIndex : 0;
         renderCarousel();
-      } catch(error) {
-        console.error(error);
+      } catch (error) {
+        console.error("Error cargando las rutinas:", error);
       }
     }
 
+    /********** Renderizar Carousel en Home **********/
     function renderCarousel() {
-      const carousel = document.getElementById('routineCarousel');
-      carousel.innerHTML = '';
+      routineCarousel.innerHTML = '';
       routines.forEach((routine, index) => {
-        // Determinar si la rutina está completada
-        const isCompleted = completedRoutines.includes(routine.id);
+        const isCompleted = routine.completed;
         const statusText = isCompleted ? 'Completado' : 'Incompleto';
-        // Agregar estilo para la rutina seleccionada
         const selectedClass = (index === selectedIndex) ? 'border-4 border-green-600' : '';
-        // Crear la tarjeta
         const card = document.createElement('div');
         card.className = `bg-white p-4 rounded-lg shadow-md cursor-pointer ${selectedClass} transition`;
-        card.style.minWidth = '250px';
-        // Generar un resumen simple: mostrar los nombres de los dos primeros ejercicios (o "y más")
         let summary = "";
         if (routine.exercises && routine.exercises.length > 0) {
           const titles = routine.exercises.map(ex => ex.title);
@@ -72,36 +185,239 @@
             ${statusText}
           </div>
         `;
-        // Al hacer clic en la tarjeta se selecciona esa rutina
         card.addEventListener('click', () => {
           selectedIndex = index;
           renderCarousel();
+          openExercise(routines[index]);
         });
-        carousel.appendChild(card);
+        routineCarousel.appendChild(card);
       });
     }
 
-    // Navegación con las flechas y Enter
+    /********** Abrir Ejercicio **********/
+    function openExercise(routineData) {
+      // Al abrir una rutina, se considera una interacción del usuario; desmutamos el reproductor.
+      if (bgPlayer && bgPlayer.isMuted()) {
+        bgPlayer.unMute();
+      }
+      currentRoutine = routineData;
+      currentExerciseIndex = -1;
+      currentState = "";
+      routineNameElem.textContent = currentRoutine.name;
+      homeSection.style.display = "none";
+      exerciseSection.style.display = "block";
+      startPreparation();
+    }
+
+    /********** Lógica de Ejecución de Rutina **********/
+    function updateProgressTimeline() {
+      progressTimelineElem.innerHTML = '';
+      const total = currentRoutine.exercises.length;
+      for (let i = 0; i < total; i++) {
+        const segmentContainer = document.createElement('div');
+        segmentContainer.className = 'flex-1 bg-gray-300 h-2 rounded overflow-hidden mx-1';
+        const progressBar = document.createElement('div');
+        progressBar.className = 'h-full bg-green-600';
+        let width = '0%';
+        if (i < currentExerciseIndex) {
+          width = '100%';
+        } else if (i === currentExerciseIndex && currentState === STATE_EXERCISE && currentRoutine.exercises[i].type === 'time') {
+          const totalTime = parseInt(currentRoutine.exercises[i].time);
+          const elapsed = totalTime - currentCountdown;
+          width = Math.min((elapsed / totalTime) * 100, 100) + '%';
+        }
+        progressBar.style.width = width;
+        segmentContainer.appendChild(progressBar);
+        progressTimelineElem.appendChild(segmentContainer);
+      }
+    }
+
+    function startPreparation() {
+      currentState = STATE_PREPARATION;
+      exerciseNameElem.textContent = "Preparación";
+      currentCountdown = 10;
+      exerciseMetricElem.textContent = currentCountdown < 10 ? "0" + currentCountdown : currentCountdown;
+      actionButton.classList.add('hidden');
+      if (currentRoutine.exercises.length > 0) {
+        let nextEx = currentRoutine.exercises[0];
+        nextExerciseInfoElem.textContent = "Siguiente ejercicio: " + nextEx.title;
+        if (nextEx.images && nextEx.images.length > 0) {
+          exerciseImageElem.src = nextEx.images[0];
+          exerciseImageContainer.style.display = 'block';
+        } else {
+          exerciseImageContainer.style.display = 'none';
+        }
+      } else {
+        nextExerciseInfoElem.textContent = "";
+      }
+      updateProgressTimeline();
+      const prepInterval = setInterval(() => {
+        currentCountdown--;
+        exerciseMetricElem.textContent = currentCountdown < 10 ? "0" + currentCountdown : currentCountdown;
+        if (currentCountdown <= 0) {
+          clearInterval(prepInterval);
+          startNextExercise();
+        }
+      }, 1000);
+    }
+
+    function startNextExercise() {
+      if (exerciseTimer) { clearInterval(exerciseTimer); exerciseTimer = null; }
+      if (restTimer) { clearInterval(restTimer); restTimer = null; }
+      if (imageInterval) { clearInterval(imageInterval); imageInterval = null; }
+      currentExerciseIndex++;
+      if (currentExerciseIndex >= currentRoutine.exercises.length) {
+        finishRoutine();
+        return;
+      }
+      nextExerciseInfoElem.textContent = "";
+      updateProgressTimeline();
+      const ex = currentRoutine.exercises[currentExerciseIndex];
+      currentState = STATE_EXERCISE;
+      exerciseNameElem.textContent = ex.title;
+      if (ex.type === 'reps') {
+        exerciseMetricElem.textContent = 'x' + ex.reps;
+        actionButton.classList.remove('hidden');
+      } else {
+        let totalSec = parseInt(ex.time) || 0;
+        let secStr = totalSec < 10 ? '0' + totalSec : totalSec;
+        exerciseMetricElem.textContent = '00:' + secStr;
+        actionButton.classList.add('hidden');
+      }
+      if (ex.images && ex.images.length > 0) {
+        exerciseImageElem.src = ex.images[0];
+        exerciseImageContainer.style.display = 'block';
+        let imgIndex = 0;
+        if (ex.images.length === 2) {
+          imageInterval = setInterval(() => {
+            imgIndex = (imgIndex + 1) % 2;
+            exerciseImageElem.src = ex.images[imgIndex];
+          }, 1000);
+        }
+      } else {
+        exerciseImageContainer.style.display = 'none';
+      }
+      if (ex.type === 'time') {
+        currentCountdown = parseInt(ex.time) || 0;
+        exerciseTimer = setInterval(() => {
+          currentCountdown--;
+          let sec = currentCountdown < 10 ? '0' + currentCountdown : currentCountdown;
+          exerciseMetricElem.textContent = '00:' + sec;
+          updateProgressTimeline();
+          if (currentCountdown <= 0) {
+            clearInterval(exerciseTimer);
+            new Audio('multimedia/listo.mp3').play();
+            finishExerciseNormally();
+          }
+        }, 1000);
+      }
+    }
+
+    function finishExerciseNormally() {
+      if (exerciseTimer) { clearInterval(exerciseTimer); exerciseTimer = null; }
+      if (imageInterval) { clearInterval(imageInterval); imageInterval = null; }
+      startRest();
+    }
+
+    function startRest() {
+      currentState = STATE_REST;
+      exerciseNameElem.textContent = "Descanso";
+      currentCountdown = 10;
+      exerciseMetricElem.textContent = currentCountdown < 10 ? "0" + currentCountdown : currentCountdown;
+      actionButton.classList.add('hidden');
+      if (currentRoutine.exercises[currentExerciseIndex + 1]) {
+        let nextEx = currentRoutine.exercises[currentExerciseIndex + 1];
+        nextExerciseInfoElem.textContent = "Siguiente ejercicio: " + nextEx.title;
+        if (nextEx.images && nextEx.images.length > 0) {
+          exerciseImageElem.src = nextEx.images[0];
+          exerciseImageContainer.style.display = 'block';
+        } else {
+          exerciseImageContainer.style.display = 'none';
+        }
+      } else {
+        nextExerciseInfoElem.textContent = "";
+      }
+      updateProgressTimeline();
+      restTimer = setInterval(() => {
+        currentCountdown--;
+        exerciseMetricElem.textContent = currentCountdown < 10 ? "0" + currentCountdown : currentCountdown;
+        if (currentCountdown <= 0) {
+          clearInterval(restTimer);
+          startNextExercise();
+        }
+      }, 1000);
+    }
+
+    function finishRoutine() {
+      currentState = STATE_COMPLETED;
+      exerciseNameElem.textContent = '¡Felicidades!';
+      exerciseMetricElem.textContent = 'Rutina Completada';
+      nextExerciseInfoElem.textContent = "";
+      actionButton.classList.add('hidden');
+      updateProgressTimeline();
+      currentRoutine.completed = true;
+      new Audio('multimedia/final.mp3').play();
+      setTimeout(() => {
+        closeExercise();
+      }, 3000);
+    }
+
+    // Manejo de teclas para Home y Ejecución
     document.addEventListener('keydown', (e) => {
-      if (e.key === 'ArrowRight') {
-        if (selectedIndex < routines.length - 1) {
-          selectedIndex++;
-          renderCarousel();
+      // En Home: flechas izquierda/derecha para navegar, Enter para seleccionar
+      if (homeSection.style.display !== "none") {
+        if (e.key === 'ArrowRight') {
+          if (selectedIndex < routines.length - 1) { selectedIndex++; renderCarousel(); }
+        } else if (e.key === 'ArrowLeft') {
+          if (selectedIndex > 0) { selectedIndex--; renderCarousel(); }
+        } else if (e.key === 'Enter') {
+          openExercise(routines[selectedIndex]);
         }
-      } else if (e.key === 'ArrowLeft') {
-        if (selectedIndex > 0) {
-          selectedIndex--;
-          renderCarousel();
+      }
+      // En Ejecución: flechas izquierda/derecha para cambiar ejercicio, Enter para "Listo" en repeticiones
+      if (exerciseSection.style.display !== "none") {
+        if (e.key === 'Enter' && currentState === STATE_EXERCISE && !actionButton.classList.contains('hidden')) {
+          finishExerciseNormally();
         }
-      } else if (e.key === 'Enter') {
-        // Redirige a ejecutar.html con el id de la rutina seleccionada
-        const selectedRoutine = routines[selectedIndex];
-        if (selectedRoutine) {
-          window.location.href = `ejecutar.html?id=${selectedRoutine.id}`;
+        if (e.key === 'ArrowRight') {
+          if (exerciseTimer) { clearInterval(exerciseTimer); exerciseTimer = null; }
+          if (restTimer) { clearInterval(restTimer); restTimer = null; }
+          if (imageInterval) { clearInterval(imageInterval); imageInterval = null; }
+          startNextExercise();
+        }
+        if (e.key === 'ArrowLeft' && currentExerciseIndex > 0) {
+          if (exerciseTimer) { clearInterval(exerciseTimer); exerciseTimer = null; }
+          if (restTimer) { clearInterval(restTimer); restTimer = null; }
+          if (imageInterval) { clearInterval(imageInterval); imageInterval = null; }
+          currentExerciseIndex -= 2;
+          startNextExercise();
+        }
+      }
+      // Global: flecha arriba activa fullscreen; flecha abajo: salir del fullscreen o cerrar rutina (volver a Home)
+      if (e.key === 'ArrowUp') {
+        if (!document.fullscreenElement) {
+          document.documentElement.requestFullscreen();
+        }
+      }
+      if (e.key === 'ArrowDown') {
+        if (document.fullscreenElement) {
+          document.exitFullscreen();
+        } else {
+          closeExercise();
         }
       }
     });
 
+    function closeExercise() {
+      if (exerciseTimer) clearInterval(exerciseTimer);
+      if (restTimer) clearInterval(restTimer);
+      if (imageInterval) clearInterval(imageInterval);
+      exerciseSection.style.display = "none";
+      homeSection.style.display = "block";
+      renderCarousel();
+    }
+
+    /********** Inicialización **********/
     loadRoutines();
   </script>
 </body>

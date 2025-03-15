@@ -7,10 +7,11 @@
         "id": 1741619274885,
         "title": "Escalada de montaña",
         "type": "time",
-        "time": "30",
+        "time": 30,
         "reps": null,
         "images": [
-          "multimedia/escalada-de-montaña.png"
+          "multimedia/escalada-de-montaña.png",
+          "multimedia/escalada-de-montaña-2.png"
         ]
       },
       {
@@ -28,10 +29,11 @@
         "id": 1741618654910,
         "title": "Elevaciones de rodillas",
         "type": "time",
-        "time": "30",
+        "time": 30,
         "reps": null,
         "images": [
-          "multimedia/elevaciones-de-rodillas.png"
+          "multimedia/elevaciones-de-rodillas.png",
+          "multimedia/elevaciones-de-rodillas-2.png"
         ]
       },
       {
@@ -39,7 +41,7 @@
         "title": "Flexiones",
         "type": "reps",
         "time": null,
-        "reps": "5",
+        "reps": 10,
         "images": [
           "multimedia/flexiones.png",
           "multimedia/flexiones-2.png"
@@ -81,10 +83,11 @@
         "id": 1741618654910,
         "title": "Elevaciones de rodillas",
         "type": "time",
-        "time": "30",
+        "time": 30,
         "reps": null,
         "images": [
-          "multimedia/elevaciones-de-rodillas.png"
+          "multimedia/elevaciones-de-rodillas.png",
+          "multimedia/elevaciones-de-rodillas-2.png"
         ]
       },
       {
@@ -92,7 +95,7 @@
         "title": "Flexiones",
         "type": "reps",
         "time": null,
-        "reps": "5",
+        "reps": 10,
         "images": [
           "multimedia/flexiones.png",
           "multimedia/flexiones-2.png"
@@ -139,10 +142,11 @@
         "id": 1741619274885,
         "title": "Escalada de montaña",
         "type": "time",
-        "time": "30",
+        "time": 30,
         "reps": null,
         "images": [
-          "multimedia/escalada-de-montaña.png"
+          "multimedia/escalada-de-montaña.png",
+          "multimedia/escalada-de-montaña-2.png"
         ]
       },
       {
@@ -273,10 +277,11 @@
         "id": 1741619274885,
         "title": "Escalada de montaña",
         "type": "time",
-        "time": "30",
+        "time": 30,
         "reps": null,
         "images": [
-          "multimedia/escalada-de-montaña.png"
+          "multimedia/escalada-de-montaña.png",
+          "multimedia/escalada-de-montaña-2.png"
         ]
       },
       {
@@ -306,19 +311,21 @@
         "title": "Toque al talón",
         "type": "reps",
         "time": null,
-        "reps": "16",
+        "reps": 16,
         "images": [
-          "multimedia/toque-al-talón.png"
+          "multimedia/toque-al-talon.png",
+          "multimedia/toque-al-talon-2.png"
         ]
       },
       {
         "id": 1741622260818,
         "title": "Tijeras verticales",
         "type": "time",
-        "time": "30",
+        "time": 30,
         "reps": null,
         "images": [
-          "multimedia/tijeras-verticales.png"
+          "multimedia/tijeras-verticales.png",
+          "multimedia/tijeras-verticales-2.png"
         ]
       },
       {
@@ -358,19 +365,21 @@
         "title": "Toque al talón",
         "type": "reps",
         "time": null,
-        "reps": "16",
+        "reps": 16,
         "images": [
-          "multimedia/toque-al-talón.png"
+          "multimedia/toque-al-talon.png",
+          "multimedia/toque-al-talon-2.png"
         ]
       },
       {
         "id": 1741622260818,
         "title": "Tijeras verticales",
         "type": "time",
-        "time": "30",
+        "time": 30,
         "reps": null,
         "images": [
-          "multimedia/tijeras-verticales.png"
+          "multimedia/tijeras-verticales.png",
+          "multimedia/tijeras-verticales-2.png"
         ]
       },
       {
@@ -425,7 +434,7 @@
         "title": "Flexiones",
         "type": "reps",
         "time": null,
-        "reps": "5",
+        "reps": 10,
         "images": [
           "multimedia/flexiones.png",
           "multimedia/flexiones-2.png"
@@ -447,9 +456,10 @@
         "title": "Toque al talón",
         "type": "reps",
         "time": null,
-        "reps": "16",
+        "reps": 16,
         "images": [
-          "multimedia/toque-al-talón.png"
+          "multimedia/toque-al-talon.png",
+          "multimedia/toque-al-talon-2.png"
         ]
       },
       {
@@ -478,7 +488,7 @@
         "title": "Flexiones",
         "type": "reps",
         "time": null,
-        "reps": "5",
+        "reps": 10,
         "images": [
           "multimedia/flexiones.png",
           "multimedia/flexiones-2.png"
@@ -500,9 +510,10 @@
         "title": "Toque al talón",
         "type": "reps",
         "time": null,
-        "reps": "16",
+        "reps": 16,
         "images": [
-          "multimedia/toque-al-talón.png"
+          "multimedia/toque-al-talon.png",
+          "multimedia/toque-al-talon-2.png"
         ]
       },
       {
@@ -556,20 +567,22 @@
         "id": 1741618654910,
         "title": "Elevaciones de rodillas",
         "type": "time",
-        "time": "30",
+        "time": 30,
         "reps": null,
         "images": [
-          "multimedia/elevaciones-de-rodillas.png"
+          "multimedia/elevaciones-de-rodillas.png",
+          "multimedia/elevaciones-de-rodillas-2.png"
         ]
       },
       {
         "id": 1741623856841,
         "title": "Sentadillas de pulso",
         "type": "time",
-        "time": "30",
+        "time": 30,
         "reps": null,
         "images": [
-          "multimedia/sentadillas-de-pulso.png"
+          "multimedia/sentadillas-de-pulso.png",
+          "multimedia/sentadillas-de-pulso-2.png"
         ]
       },
       {
@@ -608,20 +621,22 @@
         "id": 1741618654910,
         "title": "Elevaciones de rodillas",
         "type": "time",
-        "time": "30",
+        "time": 30,
         "reps": null,
         "images": [
-          "multimedia/elevaciones-de-rodillas.png"
+          "multimedia/elevaciones-de-rodillas.png",
+          "multimedia/elevaciones-de-rodillas-2.png"
         ]
       },
       {
         "id": 1741623856841,
         "title": "Sentadillas de pulso",
         "type": "time",
-        "time": "30",
+        "time": 30,
         "reps": null,
         "images": [
-          "multimedia/sentadillas-de-pulso.png"
+          "multimedia/sentadillas-de-pulso.png",
+          "multimedia/sentadillas-de-pulso-2.png"
         ]
       },
       {

@@ -18,10 +18,11 @@ const routineModalTitle = document.getElementById('routineModalTitle');
 const routineNameInput = document.getElementById('routineName');
 const saveRoutineButton = document.getElementById('saveRoutineButton');
 const routineExercisesContainer = document.getElementById('routineExercises');
-// El container de ejercicios disponibles para la rutina se encuentra dentro del modal:
 const availableExercisesContainer = document.getElementById('availableExercises');
-// Input de búsqueda en el modal de rutina
 const searchExerciseInput = document.getElementById('searchExerciseInput');
+
+// Nueva variable para almacenar las imágenes actuales en edición
+let currentImagePaths = [];
 
 // Variables temporales
 let currentExerciseId = null; // Para editar ejercicios
@@ -49,7 +50,8 @@ function openModal(exerciseId = null) {
   // Reiniciar preview y file input
   document.getElementById('exerciseImages').value = "";
   document.getElementById('exerciseImagePreview').innerHTML = "";
-
+  currentImagePaths = [];
+  
   if (exerciseId) {
     const exercise = exercises.find(ex => ex.id === exerciseId);
     exerciseTitleInput.value = exercise.title;
@@ -63,12 +65,10 @@ function openModal(exerciseId = null) {
       repsField.classList.remove('hidden');
       timeField.classList.add('hidden');
     }
-    // Mostrar preview de imágenes existentes (si las hay)
     if (exercise.images && exercise.images.length > 0) {
-      const imagePreview = document.getElementById('exerciseImagePreview');
-      exercise.images.forEach(imgPath => {
-        imagePreview.innerHTML += `<img src="${imgPath}" alt="${exercise.title}" class="w-16 h-16 object-cover mr-2" style="aspect-ratio: 4/3;">`;
-      });
+      // Asignar las imágenes existentes a currentImagePaths y renderizar preview
+      currentImagePaths = [...exercise.images];
+      renderImagePreview();
     }
     modalTitle.textContent = 'Editar Ejercicio';
     modalSubmitButton.innerHTML = '<i class="fas fa-edit mr-2"></i> Guardar Cambios';
@@ -78,6 +78,25 @@ function openModal(exerciseId = null) {
     modalSubmitButton.innerHTML = '<i class="fas fa-plus mr-2"></i> Crear Ejercicio';
   }
   exerciseModal.classList.remove('hidden');
+}
+
+// Función para renderizar las imágenes en el preview con botón de eliminación individual
+function renderImagePreview() {
+  const imagePreview = document.getElementById('exerciseImagePreview');
+  imagePreview.innerHTML = "";
+  currentImagePaths.forEach((imgPath, index) => {
+    const imgDiv = document.createElement('div');
+    imgDiv.className = "inline-block relative mr-2";
+    imgDiv.innerHTML = `<img src="${imgPath}" alt="Preview" class="w-16 h-16 object-cover" style="aspect-ratio: 4/3;">
+                        <button onclick="removeImageFromPreview(${index})" class="absolute top-0 right-0 bg-red-500 text-white text-xs rounded-full px-1">x</button>`;
+    imagePreview.appendChild(imgDiv);
+  });
+}
+
+// Función para eliminar una imagen del preview
+function removeImageFromPreview(index) {
+  currentImagePaths.splice(index, 1);
+  renderImagePreview();
 }
 
 // Cerrar modal de ejercicio
@@ -90,8 +109,8 @@ exerciseForm.addEventListener('submit', (e) => {
   e.preventDefault();
   const title = exerciseTitleInput.value.trim();
   const type = document.querySelector('input[name="exerciseType"]:checked').value;
-  const time = type === 'time' ? document.getElementById('exerciseTime').value : null;
-  const reps = type === 'reps' ? document.getElementById('exerciseReps').value : null;
+  const time = type === 'time' ? Number(document.getElementById('exerciseTime').value) : null;
+  const reps = type === 'reps' ? Number(document.getElementById('exerciseReps').value) : null;
   
   // Validar que no exista otro ejercicio con el mismo nombre si se crea uno nuevo
   if (!currentExerciseId && exercises.some(ex => ex.title.toLowerCase() === title.toLowerCase())) {
@@ -99,7 +118,8 @@ exerciseForm.addEventListener('submit', (e) => {
     return;
   }
   
-  // Procesar imágenes: se guardará solo la ruta "multimedia/nombreArchivo"
+  // Procesar imágenes:
+  // Si se subieron nuevos archivos, usarlas; si no y se está editando, se usan las que quedaron en currentImagePaths.
   let imagePaths = [];
   const imageInput = document.getElementById('exerciseImages');
   if (imageInput.files.length > 0) {
@@ -111,11 +131,7 @@ exerciseForm.addEventListener('submit', (e) => {
       imagePaths.push("multimedia/" + file.name);
     }
   } else if (currentExerciseId) {
-    // Si se edita y no se elige una nueva imagen, se conservan las existentes
-    const existing = exercises.find(ex => ex.id === currentExerciseId);
-    if (existing && existing.images) {
-      imagePaths = existing.images;
-    }
+    imagePaths = currentImagePaths;
   }
   
   const exercise = {
@@ -130,6 +146,10 @@ exerciseForm.addEventListener('submit', (e) => {
   if (currentExerciseId) {
     const index = exercises.findIndex(ex => ex.id === currentExerciseId);
     exercises[index] = exercise;
+    // Actualizar en cada rutina que contenga este ejercicio
+    routines.forEach(routine => {
+      routine.exercises = routine.exercises.map(ex => ex.id === currentExerciseId ? exercise : ex);
+    });
   } else {
     exercises.push(exercise);
   }
@@ -326,12 +346,18 @@ function renderRoutines() {
         <button onclick="deleteRoutine(${routine.id})" class="text-gray-600 hover:text-gray-800">
           <i class="fas fa-trash"></i>
         </button>
+        <button onclick="moveRoutineUp(${routine.id})" class="text-gray-600 hover:text-gray-800">
+          <i class="fas fa-arrow-up"></i>
+        </button>
+        <button onclick="moveRoutineDown(${routine.id})" class="text-gray-600 hover:text-gray-800">
+          <i class="fas fa-arrow-down"></i>
+        </button>
       </div>
     `;
     routineList.appendChild(routineCard);
   });
 
-  // Configurar la apariencia personalizada del checkbox
+  // Configurar apariencia personalizada del checkbox
   document.querySelectorAll('.routine-select-checkbox').forEach(checkbox => {
     const customBox = checkbox.parentElement.querySelector('span');
     checkbox.addEventListener('change', () => {
@@ -342,6 +368,25 @@ function renderRoutines() {
       }
     });
   });
+}
+
+// Funciones para mover rutinas
+function moveRoutineUp(id) {
+  const index = routines.findIndex(r => r.id === id);
+  if (index > 0) {
+    [routines[index - 1], routines[index]] = [routines[index], routines[index - 1]];
+    saveToLocalStorage();
+    renderRoutines();
+  }
+}
+
+function moveRoutineDown(id) {
+  const index = routines.findIndex(r => r.id === id);
+  if (index < routines.length - 1) {
+    [routines[index + 1], routines[index]] = [routines[index], routines[index + 1]];
+    saveToLocalStorage();
+    renderRoutines();
+  }
 }
 
 // Editar rutina
